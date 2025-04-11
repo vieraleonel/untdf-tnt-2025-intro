@@ -36,15 +36,7 @@ export function CoffeeList() {
   return (
     <FlatList
       data={coffeeItems}
-      renderItem={({ item }) => (
-        <CoffeeCard
-          name={item.name}
-          image={item.image}
-          category={item.category}
-          prettyPrice={item.prettyPrice}
-          rate={item.rate}
-        />
-      )}
+      renderItem={({ item }) => <CoffeeCard {...item} />}
       keyExtractor={(item) => item.name}
       numColumns={2}
       contentContainerStyle={styles.contentSeparator}
