@@ -47,10 +47,10 @@ export function CoffeeCard({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
-    borderRadius: 20,
-    width: "45%",
-    padding: 10,
-    gap: 10,
+    // borderRadius: 20,
+    // width: "45%",
+    // padding: 10,
+    // gap: 10,
   },
   imageBackground: {
     backgroundColor: "lightgray",

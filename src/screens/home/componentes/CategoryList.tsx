@@ -1,7 +1,11 @@
 import { ScrollView, StyleSheet } from "react-native";
 import { CategoryBadge } from "./CategoryBadgeItem";
+import { ROUTES } from "@/src/navigation/routes";
+import { useRouter } from "expo-router";
 
 export function CategoryList() {
+  const router = useRouter();
+
   const categories = [
     { isActive: true, nombre: "All Coffee" },
     { isActive: false, nombre: "Machiato" },
@@ -12,6 +16,10 @@ export function CategoryList() {
     { isActive: false, nombre: "Latte Machiato" },
   ];
 
+  function handleOnPressCategoria() {
+    router.push(ROUTES.CATEGORIA);
+  }
+
   return (
     <ScrollView
       horizontal
@@ -19,7 +27,11 @@ export function CategoryList() {
       contentContainerStyle={styles.scrollContainer}
     >
       {categories.map((category) => (
-        <CategoryBadge key={category.nombre} active={category.isActive}>
+        <CategoryBadge
+          key={category.nombre}
+          active={category.isActive}
+          onPress={handleOnPressCategoria}
+        >
           {category.nombre}
         </CategoryBadge>
       ))}

@@ -1,5 +1,7 @@
 import { FlatList, StyleSheet } from "react-native";
 import { CoffeeCard } from "./CoffeeCard";
+import { Link } from "expo-router";
+import { ROUTES } from "@/src/navigation/routes";
 
 export function CoffeeList() {
   const coffeeItems = [
@@ -36,7 +38,20 @@ export function CoffeeList() {
   return (
     <FlatList
       data={coffeeItems}
-      renderItem={({ item }) => <CoffeeCard {...item} />}
+      renderItem={({ item }) => (
+        <Link
+          href={ROUTES.CAFE}
+          style={{
+            backgroundColor: "white",
+            borderRadius: 20,
+            width: "45%",
+            padding: 10,
+            gap: 10,
+          }}
+        >
+          <CoffeeCard {...item} />
+        </Link>
+      )}
       keyExtractor={(item) => item.name}
       numColumns={2}
       contentContainerStyle={styles.contentSeparator}
