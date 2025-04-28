@@ -3,6 +3,7 @@ import { ROUTES } from "@/src/navigation/routes";
 import { Stack } from "expo-router";
 import { usePathname } from "expo-router/build/hooks";
 import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   const pathname = usePathname();
@@ -11,8 +12,14 @@ export default function RootLayout() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="cafe/slug" options={{ headerShown: true }} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          headerBackButtonDisplayMode: "minimal",
+          headerTitleAlign: "center",
+        }}
+      >
+        <Stack.Screen name="cafe/[slug]" options={{ headerShown: true }} />
       </Stack>
       {showFooter ? <Footer /> : null}
     </View>

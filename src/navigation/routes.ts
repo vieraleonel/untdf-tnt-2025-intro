@@ -5,6 +5,6 @@ export const ROUTES: Record<string, Href> = {
   FAVORITOS: "/favoritos",
   MIS_COMPRAS: "/mis-compras",
   NOTIFICACIONES: "/notificaciones",
-  CAFE: "/cafe/slug",
-  CATEGORIA: "/categorias/slug",
+  CAFE: "/cafe/",
+  CATEGORIA: "/categorias/",
 };

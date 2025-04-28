@@ -1,9 +1,13 @@
 import { EvilIcons, SimpleLineIcons } from "@expo/vector-icons";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Platform, StyleSheet, Text, TextInput, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export function HomeHeader() {
+  const { top } = useSafeAreaInsets();
+  const paddingTop = Platform.OS === "ios" ? top + 20 : 20;
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: paddingTop }]}>
       <Text style={styles.locationLabel}>Location</Text>
       <View style={styles.locationContainer}>
         <Text style={styles.locationText}>Ushuaia, Tierra del Fuego</Text>

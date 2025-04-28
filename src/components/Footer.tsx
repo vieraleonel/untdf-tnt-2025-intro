@@ -1,9 +1,19 @@
 import { FontAwesome6, Octicons } from "@expo/vector-icons";
 import { Link, useRouter } from "expo-router";
-import { Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Platform,
+  Pressable,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { ROUTES } from "@/src/navigation/routes";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export function Footer() {
+  const { bottom } = useSafeAreaInsets();
+  const paddingBottom = Platform.OS === "ios" ? bottom : null;
+
   const router = useRouter();
 
   function handleOnPressFavoritos() {
@@ -19,7 +29,7 @@ export function Footer() {
   }
 
   return (
-    <View style={styles.footerContainer}>
+    <View style={[styles.footerContainer, { paddingBottom: paddingBottom }]}>
       <Link href={ROUTES.HOME} style={{ padding: 10 }}>
         <Octicons name="home" size={24} color="#c67c4e" />
       </Link>
@@ -51,6 +61,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: "white",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
 });
